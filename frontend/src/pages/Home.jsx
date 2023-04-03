@@ -1,16 +1,44 @@
+import { useEffect, useState } from "react"
+import axios from "axios"
+
 export default function Home() {
+  const [countriesData, setCountriesData] = useState([])
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get(`http://localhost:4242/users`)
+        setCountriesData(response.data)
+      } catch (error) {
+        console.error("Erreur lors de la récupération des données:", error)
+      }
+    }
+    fetchData()
+  }, [])
+
   return (
     <div className="home">
       <h1>Concours de qui a fait le plus de pays</h1>
       <div className="content">
         <div className="form">
-          <div className="nom">
-            ici on va demander le nom dans un form "put"
-          </div>
-          <div className="nom">
-            ici on va demander le prénom dans un form "put"
-          </div>
-          <div className="nom">ici on va récupérer les pays dans le get</div>
+          <form className="infoForm" encType="multipart/form-data">
+            <div className="nom">
+              ici on va demander le nom dans un form "put"
+            </div>
+            <div className="prenom">
+              ici on va demander le prénom dans un form "put"
+            </div>
+            <label htmlFor="country_name">
+              <select name="country_name" id="country_name" required>
+                <option value="">Sélectionner le pays</option>
+                {countriesData.map((item, index) => (
+                  <option key={index} value={item.id}>
+                    {item.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </form>
         </div>
         <div className="store_table">
           <div className="store_table_title">

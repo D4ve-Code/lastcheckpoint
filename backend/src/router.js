@@ -9,7 +9,7 @@ const usersController = require('./controllers/UsersController')
 const countriesController = require('./controllers/CountriesController')
 
 router.get('/users', usersController.browse)
-router.get('/users', usersController.read)
+router.get('/users/:id', usersController.read)
 router.put('users/:id', usersController.edit)
 router.post('/users', usersController.add)
 router.delete('/users/:id', usersController.destroy)
