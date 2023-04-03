@@ -1,8 +1,8 @@
 const AbstractManager = require('./AbstractManager')
 
-class CharactersManager extends AbstractManager {
+class CountriesManager extends AbstractManager {
   constructor() {
-    super({ table: 'characters' })
+    super({ table: 'countries' })
   }
 
   browseAll() {
@@ -11,24 +11,19 @@ class CharactersManager extends AbstractManager {
     )
   }
 
-  insert(character) {
+  insert(country) {
     return this.database.query(
       `insert into ${this.table} (firstname, lastname, imageUrl, houses_id) values (?,?,?,?)`,
-      [
-        character.firstname,
-        character.lastname,
-        character.imageUrl,
-        character.houses_id,
-      ]
+      [country.firstname, country.lastname, country.imageUrl, country.houses_id]
     )
   }
 
-  update(character) {
+  update(country) {
     return this.database.query(
       `update ${this.table} set title = ? where id = ?`,
-      [character.title, character.id]
+      [country.title, country.id]
     )
   }
 }
 
-module.exports = CharactersManager
+module.exports = CountriesManager

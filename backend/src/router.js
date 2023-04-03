@@ -1,25 +1,20 @@
 const express = require('express')
+const app = express()
+
+app.use(express.json())
 
 const router = express.Router()
 
-const itemControllers = require('./controllers/itemControllers')
-const characterController = require('./controllers/characterController')
-const houseController = require('./controllers/houseController')
+const usersController = require('./controllers/UsersController')
+const countriesController = require('./controllers/CountriesController')
 
-// route disponible de basse garder les a titre d'exemple
-// si on va plus loin  dans la reflextion on peut voir que le fichier itemController.js
-// nous fourni des methode que lont peut utiliser " browse, read, edit, add, destroy"
+router.get('/users', usersController.browse)
+router.get('/users', usersController.read)
+router.put('users/:id', usersController.edit)
+router.post('/users', usersController.add)
+router.delete('/users/:id', usersController.destroy)
 
-router.get('/items', itemControllers.browse)
-router.get('/items/:id', itemControllers.read)
-router.put('/items/:id', itemControllers.edit)
-router.post('/items', itemControllers.add)
-router.delete('/items/:id', itemControllers.destroy)
-
-router.get('/characters', characterController.browse)
-router.post('/characters', characterController.add)
-
-router.get('/houses', houseController.browse)
-router.post('/houses', houseController.add)
+router.get('/countries', countriesController.browse)
+router.post('/countries', countriesController.add)
 
 module.exports = router

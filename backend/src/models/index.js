@@ -58,20 +58,18 @@ const models = {}
   de modèles. Les gestionnaires de modèles sont utilisés pour effectuer des 
   opérations de base de données sur les modèles. 
  */
-const ItemManager = require('./ItemManager')
-const CharacterManager = require('./CharacterManager')
-const HouseManager = require('./HouseManager')
+const UsersManager = require('./UsersManager')
+const CountriesManager = require('./CountriesManager')
 /* 
   Cette ligne importe le gestionnaire de modèles ItemManager. 
   Le gestionnaire de modèles ItemManager est utilisé pour effectuer 
   des opérations de base de données sur l'objet "item".
 */
-models.item = new ItemManager()
-models.item.setDatabase(pool)
-models.characters = new CharacterManager()
-models.characters.setDatabase(pool)
-models.houses = new HouseManager()
-models.houses.setDatabase(pool)
+models.user = new UsersManager()
+models.user.setDatabase(pool)
+models.countries = new CountriesManager()
+models.countries.setDatabase(pool)
+
 /*
   Ces lignes créent une instance de l'objet ItemManager et la stockent dans l'objet "models". 
   Ensuite, le gestionnaire de modèles ItemManager est 

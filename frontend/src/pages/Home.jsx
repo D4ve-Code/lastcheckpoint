@@ -1,36 +1,45 @@
-import Counter from "../components/Counter"
-import logo from "../assets/logo.svg"
-
 export default function Home() {
   return (
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>Hello Vite + React !</p>
-
-      <Counter />
-
-      <p>
-        Edit <code>poulet.jsx</code> and save to test HMR updates.
-      </p>
-      <p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        {" | "}
-        <a
-          className="App-link"
-          href="https://vitejs.dev/guide/features.html"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Vite Docs
-        </a>
-      </p>
-    </header>
+    <div className="home">
+      <h1>Concours de qui a fait le plus de pays</h1>
+      <div className="content">
+        <div className="form">
+          <div className="nom">
+            ici on va demander le nom dans un form "put"
+          </div>
+          <div className="nom">
+            ici on va demander le prénom dans un form "put"
+          </div>
+          <div className="nom">ici on va récupérer les pays dans le get</div>
+        </div>
+        <div className="store_table">
+          <div className="store_table_title">
+            <h2>Ventes en cours</h2>
+          </div>
+          <table className="table">
+            <thead>
+              <tr>
+                <th>nom</th>
+                <th>prénom</th>
+                <th>pays</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>oviedo</td>
+                <td>david</td>
+                <td>france</td>
+                <td>
+                  <button className="btn_modify">modifier</button>
+                </td>
+                <td>
+                  <button className="btn_delete">supprimer</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   )
 }
