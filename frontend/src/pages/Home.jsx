@@ -7,7 +7,7 @@ export default function Home() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get(`http://localhost:4242/users`)
+        const response = await axios.get(`http://localhost:4242/countries`)
         setCountriesData(response.data)
       } catch (error) {
         console.error("Erreur lors de la récupération des données:", error)
@@ -15,16 +15,16 @@ export default function Home() {
     }
     fetchData()
   }, [])
-
+  console.info(countriesData)
   return (
     <div className="home">
       <h1>Concours de qui a fait le plus de pays</h1>
       <div className="content">
         <div className="form">
           <form className="infoForm" encType="multipart/form-data">
-            <div className="nom">
-              ici on va demander le nom dans un form "put"
-            </div>
+            <label htmlFor="user_name">
+              <input type="text" name="user_name" placeholder="Votre nom" />
+            </label>
             <div className="prenom">
               ici on va demander le prénom dans un form "put"
             </div>
@@ -33,7 +33,7 @@ export default function Home() {
                 <option value="">Sélectionner le pays</option>
                 {countriesData.map((item, index) => (
                   <option key={index} value={item.id}>
-                    {item.name}
+                    {item.country}
                   </option>
                 ))}
               </select>
